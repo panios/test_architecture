@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<uml:Model xmi:version="20131001" xmlns:xmi="http://www.omg.org/spec/XMI/20131001" xmlns:uml="http://www.eclipse.org/uml2/5.0.0/UML" xmi:id="_Eu10oCJyEeuvqbFZ0uTATA" name="test1">
+  <packageImport xmi:type="uml:PackageImport" xmi:id="_EvWK8CJyEeuvqbFZ0uTATA">
+    <importedPackage xmi:type="uml:Model" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#_0"/>
+  </packageImport>
+  <packagedElement xmi:type="uml:Class" xmi:id="_IO73QCJyEeuvqbFZ0uTATA" name="Layer1">
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_SU2-YCJyEeuvqbFZ0uTATA" name="Property1"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Class" xmi:id="_Ig2tsCJyEeuvqbFZ0uTATA" name="Layer2"/>
+  <packagedElement xmi:type="uml:Abstraction" xmi:id="_PwaEoCJyEeuvqbFZ0uTATA" name="something" client="_Ig2tsCJyEeuvqbFZ0uTATA" supplier="_IO73QCJyEeuvqbFZ0uTATA"/>
+</uml:Model>
