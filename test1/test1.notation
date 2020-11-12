@@ -28,7 +28,7 @@
       <layoutConstraint xmi:type="notation:Bounds" xmi:id="_IPOyPiJyEeuvqbFZ0uTATA"/>
     </children>
     <element xmi:type="uml:Class" href="test1.uml#_IO73QCJyEeuvqbFZ0uTATA"/>
-    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_IPDzECJyEeuvqbFZ0uTATA" x="140" y="120"/>
+    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_IPDzECJyEeuvqbFZ0uTATA" x="120" y="100"/>
   </children>
   <children xmi:type="notation:Shape" xmi:id="_Ig370CJyEeuvqbFZ0uTATA" type="Class_Shape">
     <children xmi:type="notation:DecorationNode" xmi:id="_Ig4i4CJyEeuvqbFZ0uTATA" type="Class_NameLabel"/>
@@ -106,7 +106,7 @@
       <layoutConstraint xmi:type="notation:Bounds" xmi:id="_WbaLoSS4EeuQnYCb1BIcdw"/>
     </children>
     <element xmi:type="uml:Class" href="test1.uml#_WbXIQCS4EeuQnYCb1BIcdw"/>
-    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_WbZkgSS4EeuQnYCb1BIcdw" x="160" y="280"/>
+    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_WbZkgSS4EeuQnYCb1BIcdw" x="160" y="320"/>
   </children>
   <children xmi:type="notation:Shape" xmi:id="_NJtdECTAEeuQnYCb1BIcdw" type="Class_Shape">
     <children xmi:type="notation:DecorationNode" xmi:id="_NJtdEiTAEeuQnYCb1BIcdw" type="Class_NameLabel"/>
@@ -157,10 +157,12 @@
   </edges>
   <edges xmi:type="notation:Connector" xmi:id="_X-1GICS4EeuQnYCb1BIcdw" type="Abstraction_Edge" source="__gH7kCS3EeuQnYCb1BIcdw" target="_WbZkgCS4EeuQnYCb1BIcdw">
     <children xmi:type="notation:DecorationNode" xmi:id="_X-1tMCS4EeuQnYCb1BIcdw" type="Abstraction_NameLabel">
-      <layoutConstraint xmi:type="notation:Location" xmi:id="_X-1tMSS4EeuQnYCb1BIcdw" y="40"/>
+      <styles xmi:type="notation:BooleanValueStyle" xmi:id="_yzwnkCTAEeuQnYCb1BIcdw" name="IS_UPDATED_POSITION" booleanValue="true"/>
+      <layoutConstraint xmi:type="notation:Location" xmi:id="_X-1tMSS4EeuQnYCb1BIcdw" x="-1" y="38"/>
     </children>
     <children xmi:type="notation:DecorationNode" xmi:id="_X-1tMiS4EeuQnYCb1BIcdw" type="Abstraction_StereotypeLabel">
-      <layoutConstraint xmi:type="notation:Location" xmi:id="_X-1tMyS4EeuQnYCb1BIcdw" y="60"/>
+      <styles xmi:type="notation:BooleanValueStyle" xmi:id="_yz800CTAEeuQnYCb1BIcdw" name="IS_UPDATED_POSITION" booleanValue="true"/>
+      <layoutConstraint xmi:type="notation:Location" xmi:id="_X-1tMyS4EeuQnYCb1BIcdw" x="-1" y="58"/>
     </children>
     <styles xmi:type="notation:FontStyle" xmi:id="_X-1GISS4EeuQnYCb1BIcdw"/>
     <element xmi:type="uml:Abstraction" href="test1.uml#_X-yC0CS4EeuQnYCb1BIcdw"/>
