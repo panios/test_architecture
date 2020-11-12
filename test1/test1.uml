@@ -11,4 +11,6 @@
   <packagedElement xmi:type="uml:Class" xmi:id="__fK5UCS3EeuQnYCb1BIcdw" name="Class5"/>
   <packagedElement xmi:type="uml:Class" xmi:id="_WbXIQCS4EeuQnYCb1BIcdw" name="Class6"/>
   <packagedElement xmi:type="uml:Abstraction" xmi:id="_X-yC0CS4EeuQnYCb1BIcdw" client="__fK5UCS3EeuQnYCb1BIcdw" supplier="_WbXIQCS4EeuQnYCb1BIcdw"/>
+  <packagedElement xmi:type="uml:Class" xmi:id="_NJsO8CTAEeuQnYCb1BIcdw" name="Class8"/>
+  <packagedElement xmi:type="uml:Abstraction" xmi:id="_OMIjYCTAEeuQnYCb1BIcdw" client="_NJsO8CTAEeuQnYCb1BIcdw" supplier="_Ig2tsCJyEeuvqbFZ0uTATA"/>
 </uml:Model>
