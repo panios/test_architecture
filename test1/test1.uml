@@ -9,4 +9,6 @@
   <packagedElement xmi:type="uml:Class" xmi:id="_Ig2tsCJyEeuvqbFZ0uTATA" name="Layer2"/>
   <packagedElement xmi:type="uml:Abstraction" xmi:id="_PwaEoCJyEeuvqbFZ0uTATA" name="something" client="_Ig2tsCJyEeuvqbFZ0uTATA" supplier="_IO73QCJyEeuvqbFZ0uTATA"/>
   <packagedElement xmi:type="uml:Class" xmi:id="__fK5UCS3EeuQnYCb1BIcdw" name="Class5"/>
+  <packagedElement xmi:type="uml:Class" xmi:id="_WbXIQCS4EeuQnYCb1BIcdw" name="Class6"/>
+  <packagedElement xmi:type="uml:Abstraction" xmi:id="_X-yC0CS4EeuQnYCb1BIcdw" client="__fK5UCS3EeuQnYCb1BIcdw" supplier="_WbXIQCS4EeuQnYCb1BIcdw"/>
 </uml:Model>
