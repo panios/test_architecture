@@ -1,0 +1,217 @@
+{
+    "type": "bundle",
+    "id": "bundle--8438ff15-933d-45e8-8a44-598ad85edd13",
+    "spec_version": "2.0",
+    "objects": [
+        {
+            "type": "attack-pattern",
+            "id": "attack-pattern--097924ce-a9a9-4039-8591-e0deedfb8722",
+            "created_by_ref": "identity--c78cb6e5-0c4b-4611-8297-d1b8b55e40b5",
+            "created": "2020-05-21T17:43:26.506Z",
+            "modified": "2021-10-14T15:25:32.143Z",
+            "name": "Modify Parameter",
+            "description": "Adversaries may modify parameters used to instruct industrial control system devices. These devices operate via programs that dictate how and when to perform actions based on such parameters. Such parameters can determine the extent to which an action is performed and may specify additional options. For example, a program on a control system device dictating motor processes may take a parameter defining the total number of seconds to run that motor.    \n\nAn adversary can potentially modify these parameters to produce an outcome outside of what was intended by the operators. By modifying system and process critical parameters, the adversary may cause Impact to equipment and/or control processes. Modified parameters may be turned into dangerous, out-of-bounds, or unexpected values from typical operations. For example, specifying that a process run for more or less time than it should, or dictating an unusually high, low, or invalid value as a parameter. \n\nIn the Maroochy Attack, Vitek Boden gained remote computer access to the control system and altered data so that whatever function should have occurred at affected pumping stations did not occur or occurred in a different way. The software program installed in the laptop was one developed by Hunter Watertech for its use in changing configurations in the PDS computers. This ultimately led to 800,000 liters of raw sewage being spilled out into the community. (Citation: Maroochy - MITRE - 200808) In the Oldsmar water treatment attack, adversaries raised the sodium hydroxide setpoint value from 100 part-per-million (ppm) to 11,100 ppm, far beyond normal operating levels. (Citation: Oldsmar Water Treatment Attack Feb 2021)",
+            "kill_chain_phases": [
+                {
+                    "kill_chain_name": "mitre-ics-attack",
+                    "phase_name": "impair-process-control"
+                }
+            ],
+            "external_references": [
+                {
+                    "source_name": "mitre-ics-attack",
+                    "url": "https://collaborate.mitre.org/attackics/index.php/Technique/T0836",
+                    "external_id": "T0836"
+                },
+                {
+                    "source_name": "Maroochy - MITRE - 200808",
+                    "description": "Marshall Abrams. (2008, July 23). Malicious Control System Cyber Security Attack Case Study\u2013 Maroochy Water Services, Australia. Retrieved March 27, 2018.",
+                    "url": "https://www.mitre.org/sites/default/files/pdf/08%201145.pdf"
+                },
+                {
+                    "source_name": "Oldsmar Water Treatment Attack Feb 2021",
+                    "description": "Pinellas County Sheriff\u2019s Office. (2021, February 8). Treatment Plant Intrusion Press Conference. Retrieved October 8, 2021.",
+                    "url": "https://www.youtube.com/watch?v=MkXDSOgLQ6M"
+                }
+            ],
+            "object_marking_refs": [
+                "marking-definition--fa42a846-8d90-4e51-bc29-71d5b4802168"
+            ],
+            "x_mitre_data_sources": [
+                "Network Traffic: Network Traffic Content",
+                "Application Log: Application Log Content",
+                "Operational Databases: Device Alarm",
+                "Asset: Device Configuration/Parameters"
+            ],
+            "x_mitre_platforms": [
+                "Control Server",
+                "Field Controller/RTU/PLC/IED",
+                "Safety Instrumented System/Protection Relay",
+                "Human-Machine Interface"
+            ]
+        },
+        {
+            "type": "course-of-action",
+            "id": "course-of-action--bcf91ebc-f316-4e19-b2f6-444e9940c697",
+            "created_by_ref": "identity--c78cb6e5-0c4b-4611-8297-d1b8b55e40b5",
+            "created": "2019-06-11T17:06:14.029Z",
+            "modified": "2021-04-10T14:17:45.966Z",
+            "name": "Audit",
+            "description": "Perform audits or scans of systems, permissions, insecure software, insecure configurations, etc. to identify potential weaknesses. Perform periodic integrity checks of the device to validate the correctness of the firmware, software, programs, and configurations. Integrity checks, which typically include cryptographic hashes or digital signatures, should be compared to those obtained at known valid states, especially after events like device reboots, program downloads, or program restarts.",
+            "labels": [
+                "NIST SP 800-53 Rev. 4 - SI-7",
+                "IEC 62443-4-2:2013 - SR 3.4",
+                "IEC 62443-4-2:2019 - CR 3.4"
+            ],
+            "external_references": [
+                {
+                    "source_name": "mitre-ics-attack",
+                    "url": "https://collaborate.mitre.org/attackics/index.php/Mitigation/M0947",
+                    "external_id": "M0947"
+                }
+            ],
+            "object_marking_refs": [
+                "marking-definition--fa42a846-8d90-4e51-bc29-71d5b4802168"
+            ],
+            "x_mitre_version": "1.0"
+        },
+        {
+            "type": "course-of-action",
+            "id": "course-of-action--e0d38502-decb-481d-ad8b-b8f0a0c330bd",
+            "created_by_ref": "identity--c78cb6e5-0c4b-4611-8297-d1b8b55e40b5",
+            "created": "2020-09-11T16:32:21.854Z",
+            "modified": "2020-09-17T13:55:21.233Z",
+            "name": "Authorization Enforcement",
+            "description": "The device or system should restrict access to read, manipulate, or execute system objects to only authenticated users who require access based on approved security policies. Role-based Access Control (RBAC) schemes can help reduce the overhead of assigning permissions to the large number of devices within an ICS. For example, IEC 62351 provides examples of roles used to support common system operations within the electric power sector (Citation: IEC 62351), while IEEE 1686 provide sets of standard permissions for users of IEDs. (Citation: IEEE 1686-2013)",
+            "labels": [
+                "NIST SP 800-53 Rev. 4 - AC-3",
+                "IEC 62443-4-2:2013 - SR 2.1",
+                "IEC 62443-4-2:2019 - CR 2.1"
+            ],
+            "external_references": [
+                {
+                    "source_name": "mitre-ics-attack",
+                    "url": "https://collaborate.mitre.org/attackics/index.php/Mitigation/M0800",
+                    "external_id": "M0800"
+                },
+                {
+                    "source_name": "IEC 62351",
+                    "description": "International Electrotechnical Commission. (2020, July 17). IEC 62351 - Power systems management and associated information exchange - Data and communications security. Retrieved September 17, 2020.",
+                    "url": "https://webstore.iec.ch/publication/6912"
+                },
+                {
+                    "source_name": "IEEE 1686-2013",
+                    "description": "Institute of Electrical and Electronics Engineers. (2014, January). 1686-2013 - IEEE Standard for Intelligent Electronic Devices Cyber Security Capabilities. Retrieved September 17, 2020.",
+                    "url": "https://standards.ieee.org/standard/1686-2013.html"
+                }
+            ],
+            "object_marking_refs": [
+                "marking-definition--fa42a846-8d90-4e51-bc29-71d5b4802168"
+            ],
+            "x_mitre_version": "1.0"
+        },
+        {
+            "type": "relationship",
+            "id": "relationship--50b3247a-ea71-455e-b299-f00666c05146",
+            "created_by_ref": "identity--c78cb6e5-0c4b-4611-8297-d1b8b55e40b5",
+            "created": "2017-12-14T16:46:06.044Z",
+            "modified": "2020-01-03T00:14:20.652Z",
+            "relationship_type": "uses",
+            "description": "In states 3 and 4 [Stuxnet](https://collaborate.mitre.org/attackics/index.php/Software/S0010) sends two network bursts (done through the DP_SEND primitive). The data in the frames are instructions for the frequency converter drives. For example one of the frames contains records that change the maximum frequency (the speed at which the motor will operate). The frequency converter drives consist of parameters, which can be remotely configured via Profibus. One can write new values to these parameters changing the behavior of the device.(Citation: Wired W32.Stuxnet Feb 2011)",
+            "source_ref": "malware--088f1d6e-0783-47c6-9923-9c79b2af43d4",
+            "target_ref": "attack-pattern--097924ce-a9a9-4039-8591-e0deedfb8722",
+            "external_references": [
+                {
+                    "source_name": "Wired W32.Stuxnet Feb 2011",
+                    "description": "Nicolas Falliere, Liam O Murchu, Eric Chien. (2011, February). W32.Stuxnet Dossier (Version 1.4). Retrieved September 22, 2017.",
+                    "url": "https://www.wired.com/images_blogs/threatlevel/2010/11/w32_stuxnet_dossier.pdf"
+                }
+            ],
+            "object_marking_refs": [
+                "marking-definition--fa42a846-8d90-4e51-bc29-71d5b4802168"
+            ]
+        },
+        {
+            "type": "relationship",
+            "id": "relationship--5bf8473c-3c60-4a8a-8514-c2b50ab8a92d",
+            "created_by_ref": "identity--c78cb6e5-0c4b-4611-8297-d1b8b55e40b5",
+            "created": "2020-09-21T17:59:24.739Z",
+            "modified": "2020-09-29T18:58:17.429Z",
+            "relationship_type": "mitigates",
+            "description": "Provide the ability to verify the integrity of control logic or programs loaded on a controller. While techniques like CRCs and checksums are commonly used, they are not cryptographically strong and can be vulnerable to collisions. Preferably cryptographic hash functions (e.g., SHA-2, SHA-3) should be used.",
+            "source_ref": "course-of-action--bcf91ebc-f316-4e19-b2f6-444e9940c697",
+            "target_ref": "attack-pattern--097924ce-a9a9-4039-8591-e0deedfb8722",
+            "object_marking_refs": [
+                "marking-definition--fa42a846-8d90-4e51-bc29-71d5b4802168"
+            ]
+        },
+        {
+            "type": "relationship",
+            "id": "relationship--e6be2fb4-3815-4e52-8dec-2aed1dc3b7cf",
+            "created_by_ref": "identity--c78cb6e5-0c4b-4611-8297-d1b8b55e40b5",
+            "created": "2020-09-21T17:59:24.739Z",
+            "modified": "2020-09-29T18:58:17.429Z",
+            "relationship_type": "mitigates",
+            "description": "All field controllers should restrict the modification of programs to only certain users (e.g., engineers, field technician), preferably through implementing a role-based access mechanism.",
+            "source_ref": "course-of-action--e0d38502-decb-481d-ad8b-b8f0a0c330bd",
+            "target_ref": "attack-pattern--097924ce-a9a9-4039-8591-e0deedfb8722",
+            "object_marking_refs": [
+                "marking-definition--fa42a846-8d90-4e51-bc29-71d5b4802168"
+            ]
+        },
+        {
+            "type": "malware",
+            "id": "malware--088f1d6e-0783-47c6-9923-9c79b2af43d4",
+            "created_by_ref": "identity--c78cb6e5-0c4b-4611-8297-d1b8b55e40b5",
+            "created": "2020-12-14T17:34:58.457Z",
+            "modified": "2021-10-12T21:50:58.905Z",
+            "name": "Stuxnet",
+            "description": "[Stuxnet](https://attack.mitre.org/software/S0603) was the first publicly reported piece of malware to specifically target industrial control systems devices. [Stuxnet](https://attack.mitre.org/software/S0603) is a large and complex piece of malware that utilized multiple different behaviors including multiple zero-day vulnerabilities, a sophisticated Windows rootkit, and network infection routines.(Citation: Symantec W.32 Stuxnet Dossier)(Citation: CISA ICS Advisory ICSA-10-272-01)(Citation: ESET Stuxnet Under the Microscope)(Citation: Langer Stuxnet) [Stuxnet](https://attack.mitre.org/software/S0603) was discovered in 2010, with some components being used as early as November 2008.(Citation: Symantec W.32 Stuxnet Dossier)",
+            "labels": [
+                "malware"
+            ],
+            "external_references": [
+                {
+                    "source_name": "mitre-attack",
+                    "url": "https://attack.mitre.org/software/S0603",
+                    "external_id": "S0603"
+                },
+                {
+                    "source_name": "W32.Stuxnet",
+                    "description": "(Citation: Symantec W.32 Stuxnet Dossier)"
+                },
+                {
+                    "source_name": "Symantec W.32 Stuxnet Dossier",
+                    "description": "Nicolas Falliere, Liam O. Murchu, Eric Chien. (2011, February). W32.Stuxnet Dossier. Retrieved December 7, 2020.",
+                    "url": "https://www.wired.com/images_blogs/threatlevel/2010/11/w32_stuxnet_dossier.pdf"
+                },
+                {
+                    "source_name": "CISA ICS Advisory ICSA-10-272-01",
+                    "description": "CISA. (2010, September 10). ICS Advisory (ICSA-10-272-01). Retrieved December 7, 2020.",
+                    "url": "https://us-cert.cisa.gov/ics/advisories/ICSA-10-272-01"
+                },
+                {
+                    "source_name": "ESET Stuxnet Under the Microscope",
+                    "description": "Matrosov, A., Rodionov, E., Harley, D., Malcho, J.. (n.d.). Stuxnet Under the Microscope. Retrieved December 7, 2020.",
+                    "url": "https://www.esetnod32.ru/company/viruslab/analytics/doc/Stuxnet_Under_the_Microscope.pdf"
+                },
+                {
+                    "source_name": "Langer Stuxnet",
+                    "description": "Ralph Langner. (2013, November). Ralph Langner. (2013, November). To Kill a Centrifuge: A Technical Analysis of What Stuxnet's Creators Tried to Achieve. Retrieved December 7, 2020.",
+                    "url": "https://www.langner.com/wp-content/uploads/2017/03/to-kill-a-centrifuge.pdf"
+                }
+            ],
+            "object_marking_refs": [
+                "marking-definition--fa42a846-8d90-4e51-bc29-71d5b4802168"
+            ],
+            "x_mitre_aliases": [
+                "Stuxnet",
+                "W32.Stuxnet"
+            ],
+            "x_mitre_version": "1.0",
+            "x_mitre_platforms": [
+                "Windows"
+            ]
+        }
+    ]
+}

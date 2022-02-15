@@ -1,0 +1,542 @@
+{
+    "type": "bundle",
+    "id": "bundle--9a903518-6124-4377-9a13-57e12890fa0b",
+    "spec_version": "2.0",
+    "objects": [
+        {
+            "type": "attack-pattern",
+            "id": "attack-pattern--40b300ba-f553-48bf-862e-9471b220d455",
+            "created_by_ref": "identity--c78cb6e5-0c4b-4611-8297-d1b8b55e40b5",
+            "created": "2020-05-21T17:43:26.506Z",
+            "modified": "2021-10-08T15:25:32.143Z",
+            "name": "Unauthorized Command Message",
+            "description": "Adversaries may send unauthorized command messages to instruct control system assets to perform actions outside of their intended functionality, or without the logical preconditions to trigger their expected function. Command messages are used in ICS networks to give direct instructions to control systems devices. If an adversary can send an unauthorized command message to a control system, then it can instruct the control systems device to perform an action outside the normal bounds of the device's actions. An adversary could potentially instruct a control systems device to perform an action that will cause an Impact. (Citation: Research - Research - Taxonomy Cyber Attacks on SCADA) In the Maroochy Attack, the adversary used a dedicated analog two-way radio system to send false data and instructions to pumping stations and the central computer. (Citation: Maroochy - MITRE - 200808) In the Dallas Siren incident, adversaries were able to send command messages to activate tornado alarm systems across the city without an impending tornado or other disaster. (Citation:ZDNet Dallas April 2017) (Citation:StateScoop Dallas March 2019)",
+            "kill_chain_phases": [
+                {
+                    "kill_chain_name": "mitre-ics-attack",
+                    "phase_name": "impair-process-control"
+                }
+            ],
+            "external_references": [
+                {
+                    "source_name": "mitre-ics-attack",
+                    "url": "https://collaborate.mitre.org/attackics/index.php/Technique/T0855",
+                    "external_id": "T0855"
+                },
+                {
+                    "source_name": "StateScoop Dallas March 2019",
+                    "description": "Benjamin Freed. (2019, March 13). Tornado sirens in Dallas suburbs deactivated after being hacked and set off. Retrieved November 6, 2020.",
+                    "url": "https://statescoop.com/tornado-sirens-in-dallas-suburbs-deactivated-after-being-hacked-and-set-off/"
+                },
+                {
+                    "source_name": "Research - Research - Taxonomy Cyber Attacks on SCADA",
+                    "description": "Bonnie Zhu, Anthony Joseph, Shankar Sastry. (2011). A Taxonomy of Cyber Attacks on SCADA Systems. Retrieved January 12, 2018.",
+                    "url": "http://ieeexplore.ieee.org/stamp/stamp.jsp?tp=&arnumber=6142258"
+                },
+                {
+                    "source_name": "Ukraine15 - EISAC - 201603",
+                    "description": "Electricity Information Sharing and Analysis Center; SANS Industrial Control Systems. (2016, March 18). Analysis of the Cyber Attack on the Ukranian Power Grid: Defense Use Case. Retrieved March 27, 2018.",
+                    "url": "https://ics.sans.org/media/E-ISAC%20SANS%20Ukraine%20DUC%205.pdf"
+                },
+                {
+                    "source_name": "Maroochy - MITRE - 200808",
+                    "description": "Marshall Abrams. (2008, July 23). Malicious Control System Cyber Security Attack Case Study\u2013 Maroochy Water Services, Australia. Retrieved March 27, 2018.",
+                    "url": "https://www.mitre.org/sites/default/files/pdf/08%201145.pdf"
+                },
+                {
+                    "source_name": "ZDNet Dallas April 2017",
+                    "description": "Zack Whittaker. (2017, April 12). Dallas' emergency sirens were hacked with a rogue radio signal. Retrieved November 6, 2020.",
+                    "url": "https://www.zdnet.com/article/experts-think-they-know-how-dallas-emergency-sirens-were-hacked/"
+                }
+            ],
+            "object_marking_refs": [
+                "marking-definition--fa42a846-8d90-4e51-bc29-71d5b4802168"
+            ],
+            "x_mitre_data_sources": [
+                "Network Traffic: Network Traffic Content",
+                "Application Log: Application Log Content",
+                "Operational Databases: Process History/Live Data",
+                "Operational Databases: Process/Event Alarm"
+            ],
+            "x_mitre_platforms": [
+                "Field Controller/RTU/PLC/IED"
+            ]
+        },
+        {
+            "type": "course-of-action",
+            "id": "course-of-action--c7257b6e-4159-4771-b1f3-2bb93adaecac",
+            "created_by_ref": "identity--c78cb6e5-0c4b-4611-8297-d1b8b55e40b5",
+            "created": "2020-09-11T16:32:21.854Z",
+            "modified": "2020-09-17T13:55:21.233Z",
+            "name": "Communication Authenticity",
+            "description": "When communicating over an untrusted network utilize secure network protocols that both authenticate the message sender and can verify its integrity, either through message authentication codes (MACs) or digital signatures, to prevent the transmission of spoofed network messages or unauthorized connections.",
+            "labels": [
+                "NIST SP 800-53 Rev. 4 - SC-8;SC-23",
+                "IEC 62443-3-3:2013 - SR 3.1",
+                "IEC 62443-4-2:2019 - CR 3.1"
+            ],
+            "external_references": [
+                {
+                    "source_name": "mitre-ics-attack",
+                    "url": "https://collaborate.mitre.org/attackics/index.php/Mitigation/M0802",
+                    "external_id": "M0802"
+                }
+            ],
+            "object_marking_refs": [
+                "marking-definition--fa42a846-8d90-4e51-bc29-71d5b4802168"
+            ],
+            "x_mitre_version": "1.0"
+        },
+        {
+            "type": "course-of-action",
+            "id": "course-of-action--11f242bc-3121-438c-84b2-5cbd46a4bb17",
+            "created_by_ref": "identity--c78cb6e5-0c4b-4611-8297-d1b8b55e40b5",
+            "created": "2019-06-11T16:33:55.337Z",
+            "modified": "2021-04-10T14:15:36.342Z",
+            "name": "Filter Network Traffic",
+            "description": "Use network appliances to filter ingress or egress traffic and perform protocol-based filtering. Configure software on endpoints to filter network traffic. Perform inline allow/denylisting of network messages based on the application layer (OSI Layer 7) protocol, especially for automation protocols. Application allowlists are beneficial when there are well-defined communication sequences, types, rates, or patterns needed during expected system operations. Application denylists may be needed if all acceptable communication sequences cannot be defined, but instead a set of known malicious uses can be denied (e.g., excessive communication attempts, shutdown messages, invalid commands). Devices performing these functions are often referred to as deep-packet inspection (DPI) firewalls, context-aware firewalls, or firewalls blocking specific automation/SCADA protocol aware firewalls.",
+            "labels": [
+                "NIST SP 800-53 Rev. 4 - AC-3; SC-7",
+                "IEC 62443-3-3:2013 - SR 5.1",
+                "IEC 62443-4-2:2019 - CR 5.1"
+            ],
+            "external_references": [
+                {
+                    "source_name": "mitre-ics-attack",
+                    "url": "https://collaborate.mitre.org/attackics/index.php/Mitigation/M0937",
+                    "external_id": "M0937"
+                }
+            ],
+            "object_marking_refs": [
+                "marking-definition--fa42a846-8d90-4e51-bc29-71d5b4802168"
+            ],
+            "x_mitre_version": "1.1"
+        },
+        {
+            "type": "course-of-action",
+            "id": "course-of-action--aadac250-bcdc-44e3-a4ae-f52bd0a7a16a",
+            "created_by_ref": "identity--c78cb6e5-0c4b-4611-8297-d1b8b55e40b5",
+            "created": "2019-06-10T20:53:36.319Z",
+            "modified": "2021-04-12T16:00:36.319Z",
+            "name": "Network Allowlists",
+            "description": "Network allowlists can be implemented through either host-based files or system hosts files to specify what external connections (e.g., IP address, MAC address, port, protocol) can be made from a device. Allowlist techniques that operate at the application layer (e.g., DNP3, Modbus, HTTP) are addressed in Filter Network Traffic mitigation.",
+            "labels": [
+                "NIST SP 800-53 Rev. 4 - AC-3"
+            ],
+            "external_references": [
+                {
+                    "source_name": "mitre-ics-attack",
+                    "url": "https://collaborate.mitre.org/attackics/index.php/Mitigation/M0807",
+                    "external_id": "M0807"
+                }
+            ],
+            "object_marking_refs": [
+                "marking-definition--fa42a846-8d90-4e51-bc29-71d5b4802168"
+            ],
+            "x_mitre_version": "1.0"
+        },
+        {
+            "type": "course-of-action",
+            "id": "course-of-action--1e7ccfc0-94c8-496e-8d27-032120892291",
+            "created_by_ref": "identity--c78cb6e5-0c4b-4611-8297-d1b8b55e40b5",
+            "created": "2019-06-10T20:41:03.271Z",
+            "modified": "2021-04-10T14:14:39.500Z",
+            "name": "Network Segmentation",
+            "description": "Architect sections of the network to isolate critical systems, functions, or resources. Use physical and logical segmentation to prevent access to potentially sensitive systems and information. Use a DMZ to contain any internet-facing services that should not be exposed from the internal network. Restrict network access to only required systems and services. In addition, prevent systems from other networks or business functions (e.g., enterprise) from accessing critical process control systems. For example, in IEC 62443, systems within the same secure level should be grouped into a 'zone', and access to that zone is restricted by a 'conduit', or mechanism to restrict data flows between zones by segmenting the network.",
+            "labels": [
+                "NIST SP 800-53 Rev. 4 - AC-3",
+                "IEC 62443-3-3:2013 - SR 5.1",
+                "IEC 62443-4-2:2019 - CR 5.1"
+            ],
+            "external_references": [
+                {
+                    "source_name": "mitre-ics-attack",
+                    "url": "https://collaborate.mitre.org/attackics/index.php/Mitigation/M0930",
+                    "external_id": "M0930"
+                }
+            ],
+            "object_marking_refs": [
+                "marking-definition--fa42a846-8d90-4e51-bc29-71d5b4802168"
+            ],
+            "x_mitre_version": "1.0"
+        },
+        {
+            "type": "course-of-action",
+            "id": "course-of-action--72e46e53-e12d-4106-9c70-33241b6ed549",
+            "created_by_ref": "identity--c78cb6e5-0c4b-4611-8297-d1b8b55e40b5",
+            "created": "2019-06-06T21:16:18.709Z",
+            "modified": "2020-09-25T14:47:45.681Z",
+            "name": "Software Process and Device Authentication",
+            "description": "Require the authentication of devices and software processes where appropriate. Devices that connect remotely to other systems should require strong authentication to prevent spoofing of communications. Furthermore, software processes should also require authentication if accessing a local or remote API.",
+            "labels": [
+                "NIST SP 800-53 Rev. 4 - IA-9",
+                "IEC 62443-3-3:2013 - SR 1.2",
+                "IEC 62443-4-2:2019 - CR 1.2"
+            ],
+            "external_references": [
+                {
+                    "source_name": "mitre-ics-attack",
+                    "url": "https://collaborate.mitre.org/attackics/index.php/Mitigation/M0813",
+                    "external_id": "M0813"
+                }
+            ],
+            "object_marking_refs": [
+                "marking-definition--fa42a846-8d90-4e51-bc29-71d5b4802168"
+            ],
+            "x_mitre_version": "1.0"
+        },
+        {
+            "type": "relationship",
+            "id": "relationship--641813ea-66a9-4949-848f-db83420aac39",
+            "created_by_ref": "identity--c78cb6e5-0c4b-4611-8297-d1b8b55e40b5",
+            "created": "2021-04-11T14:06:54.109Z",
+            "modified": "2021-04-11T14:06:54.109Z",
+            "relationship_type": "uses",
+            "description": "In the Ukraine 2015 Incident, [Sandworm Team](https://collaborate.mitre.org/attackics/index.php/Group/G0007) issued unauthorized commands to substation breakers after gaining control of operator workstations and accessing a distribution management system (DMS) client application.(Citation: ICS SANS Ukraine March 2018)",
+            "source_ref": "intrusion-set--381fcf73-60f6-4ab2-9991-6af3cbc35192",
+            "target_ref": "attack-pattern--40b300ba-f553-48bf-862e-9471b220d455",
+            "external_references": [
+                {
+                    "source_name": "ICS SANS Ukraine March 2018",
+                    "description": "Electricity Information Sharing and Analysis Center; SANS Industrial Control Systems. (2016, March 18). Analysis of the Cyber Attack on the Ukranian Power Grid: Defense Use Case. Retrieved March 27, 2018.",
+                    "url": "https://ics.sans.org/media/E-ISAC_SANS_Ukraine_DUC_5.pdf"
+                }
+            ],
+            "object_marking_refs": [
+                "marking-definition--fa42a846-8d90-4e51-bc29-71d5b4802168"
+            ]
+        },
+        {
+            "type": "relationship",
+            "id": "relationship--9fb2a9b2-3b25-4f77-9f7a-e832b2e5071a",
+            "created_by_ref": "identity--c78cb6e5-0c4b-4611-8297-d1b8b55e40b5",
+            "created": "2018-10-17T00:14:20.652Z",
+            "modified": "2021-10-13T00:14:20.652Z",
+            "relationship_type": "uses",
+            "description": "[Industroyer](https://collaborate.mitre.org/attackics/index.php/Software/S0001) Using its protocol payloads, Industroyer sends unauthorized commands to RTUs to change the state of equipment.(Citation: ESET Win32/Industroyer Jun 2017)",
+            "source_ref": "malware--e401d4fe-f0c9-44f0-98e6-f93487678808",
+            "target_ref": "attack-pattern--40b300ba-f553-48bf-862e-9471b220d455",
+            "external_references": [
+                {
+                    "source_name": "ESET Win32/Industroyer Jun 2017",
+                    "description": "Anton Cherepanov, ESET. (2017, June 12). Win32/Industroyer: A new threat for industrial control systems. Retrieved September 15, 2017.",
+                    "url": "https://www.welivesecurity.com/wp-content/uploads/2017/06/Win32_Industroyer.pdf"
+                }
+            ],
+            "object_marking_refs": [
+                "marking-definition--fa42a846-8d90-4e51-bc29-71d5b4802168"
+            ]
+        },
+        {
+            "type": "relationship",
+            "id": "relationship--8a06c15b-b7e5-4374-9265-8d9020e126cd",
+            "created_by_ref": "identity--c78cb6e5-0c4b-4611-8297-d1b8b55e40b5",
+            "created": "2021-10-14T16:46:06.044Z",
+            "modified": "2021-10-14T22:14:20.652Z",
+            "relationship_type": "uses",
+            "description": "[Stuxnet](https://collaborate.mitre.org/attackics/index.php/Software/S0010) sends two network bursts (done through the DP_SEND primitive). The data in the frames are instructions for the frequency converter drives. (Citation: Wired W32.Stuxnet Feb 2011)",
+            "source_ref": "malware--088f1d6e-0783-47c6-9923-9c79b2af43d4",
+            "target_ref": "attack-pattern--40b300ba-f553-48bf-862e-9471b220d455",
+            "external_references": [
+                {
+                    "source_name": "Wired W32.Stuxnet Feb 2011",
+                    "description": "Nicolas Falliere, Liam O Murchu, Eric Chien. (2011, February). W32.Stuxnet Dossier (Version 1.4). Retrieved September 22, 2017.",
+                    "url": "https://www.wired.com/images_blogs/threatlevel/2010/11/w32_stuxnet_dossier.pdf"
+                }
+            ],
+            "object_marking_refs": [
+                "marking-definition--fa42a846-8d90-4e51-bc29-71d5b4802168"
+            ]
+        },
+        {
+            "type": "relationship",
+            "id": "relationship--6e3c2c04-0838-4863-80a7-d73ef5ac6a64",
+            "created_by_ref": "identity--c78cb6e5-0c4b-4611-8297-d1b8b55e40b5",
+            "created": "2020-09-21T17:59:24.739Z",
+            "modified": "2020-09-29T18:58:17.429Z",
+            "relationship_type": "mitigates",
+            "description": "Protocols used for control functions should provide authenticity through MAC functions or digital signatures. If not, utilize bump-in-the-wire devices or VPNs to enforce communication authenticity between devices that are not capable of supporting this (e.g., legacy controllers, RTUs).",
+            "source_ref": "course-of-action--c7257b6e-4159-4771-b1f3-2bb93adaecac",
+            "target_ref": "attack-pattern--40b300ba-f553-48bf-862e-9471b220d455",
+            "object_marking_refs": [
+                "marking-definition--fa42a846-8d90-4e51-bc29-71d5b4802168"
+            ]
+        },
+        {
+            "type": "relationship",
+            "id": "relationship--48489baf-56c2-423e-964a-0a61688e4a19",
+            "created_by_ref": "identity--c78cb6e5-0c4b-4611-8297-d1b8b55e40b5",
+            "created": "2020-09-21T17:59:24.739Z",
+            "modified": "2020-09-29T18:58:17.429Z",
+            "relationship_type": "mitigates",
+            "description": "Perform inline allowlisting of automation protocol commands to prevent devices from sending unauthorized command or reporting messages. Allow/denylist techniques need to be designed with sufficient accuracy to prevent the unintended blocking of valid messages.",
+            "source_ref": "course-of-action--11f242bc-3121-438c-84b2-5cbd46a4bb17",
+            "target_ref": "attack-pattern--40b300ba-f553-48bf-862e-9471b220d455",
+            "object_marking_refs": [
+                "marking-definition--fa42a846-8d90-4e51-bc29-71d5b4802168"
+            ]
+        },
+        {
+            "type": "relationship",
+            "id": "relationship--b960c5ed-1ea8-4dde-9203-c02d291d3bc6",
+            "created_by_ref": "identity--c78cb6e5-0c4b-4611-8297-d1b8b55e40b5",
+            "created": "2020-09-21T17:59:24.739Z",
+            "modified": "2020-09-29T18:58:17.429Z",
+            "relationship_type": "mitigates",
+            "description": "Use host-based allowlists to prevent devices from accepting connections from unauthorized systems. For example, allowlists can be used to ensure devices can only connect with master stations or known management/engineering workstations.",
+            "source_ref": "course-of-action--aadac250-bcdc-44e3-a4ae-f52bd0a7a16a",
+            "target_ref": "attack-pattern--40b300ba-f553-48bf-862e-9471b220d455",
+            "object_marking_refs": [
+                "marking-definition--fa42a846-8d90-4e51-bc29-71d5b4802168"
+            ]
+        },
+        {
+            "type": "relationship",
+            "id": "relationship--206cc4c8-797e-427b-86f1-4c81df391c6e",
+            "created_by_ref": "identity--c78cb6e5-0c4b-4611-8297-d1b8b55e40b5",
+            "created": "2020-09-21T17:59:24.739Z",
+            "modified": "2020-09-29T18:58:17.429Z",
+            "relationship_type": "mitigates",
+            "description": "Segment operational assets and their management devices based on their functional role within the process. Enabling more strict isolation to more critical control and operational information within the control environment.",
+            "source_ref": "course-of-action--1e7ccfc0-94c8-496e-8d27-032120892291",
+            "target_ref": "attack-pattern--40b300ba-f553-48bf-862e-9471b220d455",
+            "object_marking_refs": [
+                "marking-definition--fa42a846-8d90-4e51-bc29-71d5b4802168"
+            ]
+        },
+        {
+            "type": "relationship",
+            "id": "relationship--bbf297d3-0c3c-44be-b780-332bac17b0ba",
+            "created_by_ref": "identity--c78cb6e5-0c4b-4611-8297-d1b8b55e40b5",
+            "created": "2020-09-21T17:59:24.739Z",
+            "modified": "2020-09-29T18:58:17.429Z",
+            "relationship_type": "mitigates",
+            "description": "Devices should authenticate all messages between master and outstation assets.",
+            "source_ref": "course-of-action--72e46e53-e12d-4106-9c70-33241b6ed549",
+            "target_ref": "attack-pattern--40b300ba-f553-48bf-862e-9471b220d455",
+            "object_marking_refs": [
+                "marking-definition--fa42a846-8d90-4e51-bc29-71d5b4802168"
+            ]
+        },
+        {
+            "type": "intrusion-set",
+            "id": "intrusion-set--381fcf73-60f6-4ab2-9991-6af3cbc35192",
+            "created_by_ref": "identity--c78cb6e5-0c4b-4611-8297-d1b8b55e40b5",
+            "created": "2017-05-31T21:32:04.588Z",
+            "modified": "2021-10-15T21:46:19.437Z",
+            "name": "Sandworm Team",
+            "description": "[Sandworm Team](https://attack.mitre.org/groups/G0034) is a destructive threat group that has been attributed to Russia's General Staff Main Intelligence Directorate (GRU) Main Center for Special Technologies (GTsST) military unit 74455.(Citation: US District Court Indictment GRU Unit 74455 October 2020)(Citation: UK NCSC Olympic Attacks October 2020) This group has been active since at least 2009.(Citation: iSIGHT Sandworm 2014)(Citation: CrowdStrike VOODOO BEAR)(Citation: USDOJ Sandworm Feb 2020)(Citation: NCSC Sandworm Feb 2020)\n\nIn October 2020, the US indicted six GRU Unit 74455 officers associated with [Sandworm Team](https://attack.mitre.org/groups/G0034) for the following cyber operations: the 2015 and 2016 attacks against Ukrainian electrical companies and government organizations, the 2017 worldwide [NotPetya](https://attack.mitre.org/software/S0368) attack, targeting of the 2017 French presidential campaign, the 2018 [Olympic Destroyer](https://attack.mitre.org/software/S0365) attack against the Winter Olympic Games, the 2018 operation against the Organisation for the Prohibition of Chemical Weapons, and attacks against the country of Georgia in 2018 and 2019.(Citation: US District Court Indictment GRU Unit 74455 October 2020)(Citation: UK NCSC Olympic Attacks October 2020) Some of these were conducted with the assistance of GRU Unit 26165, which is also referred to as [APT28](https://attack.mitre.org/groups/G0007).(Citation: US District Court Indictment GRU Oct 2018)",
+            "aliases": [
+                "Sandworm Team",
+                "ELECTRUM",
+                "Telebots",
+                "IRON VIKING",
+                "BlackEnergy (Group)",
+                "Quedagh",
+                "VOODOO BEAR"
+            ],
+            "external_references": [
+                {
+                    "source_name": "mitre-attack",
+                    "url": "https://attack.mitre.org/groups/G0034",
+                    "external_id": "G0034"
+                },
+                {
+                    "source_name": "Sandworm Team",
+                    "description": "(Citation: iSIGHT Sandworm 2014) (Citation: F-Secure BlackEnergy 2014) (Citation: InfoSecurity Sandworm Oct 2014)(Citation: US District Court Indictment GRU Unit 74455 October 2020)(Citation: UK NCSC Olympic Attacks October 2020)"
+                },
+                {
+                    "source_name": "ELECTRUM",
+                    "description": "(Citation: Dragos ELECTRUM)(Citation: UK NCSC Olympic Attacks October 2020)"
+                },
+                {
+                    "source_name": "Telebots",
+                    "description": "(Citation: NCSC Sandworm Feb 2020)(Citation: US District Court Indictment GRU Unit 74455 October 2020)(Citation: UK NCSC Olympic Attacks October 2020)"
+                },
+                {
+                    "source_name": "IRON VIKING",
+                    "description": "(Citation: Secureworks IRON VIKING )(Citation: US District Court Indictment GRU Unit 74455 October 2020)(Citation: UK NCSC Olympic Attacks October 2020)"
+                },
+                {
+                    "source_name": "BlackEnergy (Group)",
+                    "description": "(Citation: NCSC Sandworm Feb 2020)(Citation: UK NCSC Olympic Attacks October 2020)"
+                },
+                {
+                    "source_name": "Quedagh",
+                    "description": "(Citation: iSIGHT Sandworm 2014) (Citation: F-Secure BlackEnergy 2014)(Citation: UK NCSC Olympic Attacks October 2020)"
+                },
+                {
+                    "source_name": "VOODOO BEAR",
+                    "description": "(Citation: CrowdStrike VOODOO BEAR)(Citation: US District Court Indictment GRU Unit 74455 October 2020)(Citation: UK NCSC Olympic Attacks October 2020)"
+                },
+                {
+                    "source_name": "US District Court Indictment GRU Unit 74455 October 2020",
+                    "description": "Scott W. Brady. (2020, October 15). United States vs. Yuriy Sergeyevich Andrienko et al.. Retrieved November 25, 2020.",
+                    "url": "https://www.justice.gov/opa/press-release/file/1328521/download"
+                },
+                {
+                    "source_name": "UK NCSC Olympic Attacks October 2020",
+                    "description": "UK NCSC. (2020, October 19). UK exposes series of Russian cyber attacks against Olympic and Paralympic Games . Retrieved November 30, 2020.",
+                    "url": "https://www.gov.uk/government/news/uk-exposes-series-of-russian-cyber-attacks-against-olympic-and-paralympic-games"
+                },
+                {
+                    "source_name": "iSIGHT Sandworm 2014",
+                    "description": "Hultquist, J.. (2016, January 7). Sandworm Team and the Ukrainian Power Authority Attacks. Retrieved October 6, 2017.",
+                    "url": "https://www.fireeye.com/blog/threat-research/2016/01/ukraine-and-sandworm-team.html"
+                },
+                {
+                    "source_name": "CrowdStrike VOODOO BEAR",
+                    "description": "Meyers, A. (2018, January 19). Meet CrowdStrike\u2019s Adversary of the Month for January: VOODOO BEAR. Retrieved May 22, 2018.",
+                    "url": "https://www.crowdstrike.com/blog/meet-crowdstrikes-adversary-of-the-month-for-january-voodoo-bear/"
+                },
+                {
+                    "source_name": "USDOJ Sandworm Feb 2020",
+                    "description": "Pompeo, M. (2020, February 20). The United States Condemns Russian Cyber Attack Against the Country of Georgia. Retrieved June 18, 2020.",
+                    "url": "https://2017-2021.state.gov/the-united-states-condemns-russian-cyber-attack-against-the-country-of-georgia//index.html"
+                },
+                {
+                    "source_name": "NCSC Sandworm Feb 2020",
+                    "description": "NCSC. (2020, February 20). NCSC supports US advisory regarding GRU intrusion set Sandworm. Retrieved June 10, 2020.",
+                    "url": "https://www.ncsc.gov.uk/news/ncsc-supports-sandworm-advisory"
+                },
+                {
+                    "source_name": "US District Court Indictment GRU Oct 2018",
+                    "description": "Brady, S . (2018, October 3). Indictment - United States vs Aleksei Sergeyevich Morenets, et al.. Retrieved October 1, 2020.",
+                    "url": "https://www.justice.gov/opa/page/file/1098481/download"
+                },
+                {
+                    "source_name": "F-Secure BlackEnergy 2014",
+                    "description": "F-Secure Labs. (2014). BlackEnergy & Quedagh: The convergence of crimeware and APT attacks. Retrieved March 24, 2016.",
+                    "url": "https://blog-assets.f-secure.com/wp-content/uploads/2019/10/15163408/BlackEnergy_Quedagh.pdf"
+                },
+                {
+                    "source_name": "InfoSecurity Sandworm Oct 2014",
+                    "description": "Muncaster, P.. (2014, October 14). Microsoft Zero Day Traced to Russian \u2018Sandworm\u2019 Hackers. Retrieved October 6, 2017.",
+                    "url": "https://www.infosecurity-magazine.com/news/microsoft-zero-day-traced-russian/"
+                },
+                {
+                    "source_name": "Dragos ELECTRUM",
+                    "description": "Dragos. (2017, January 1). ELECTRUM Threat Profile. Retrieved June 10, 2020.",
+                    "url": "https://www.dragos.com/resource/electrum/"
+                },
+                {
+                    "source_name": "Secureworks IRON VIKING ",
+                    "description": "Secureworks. (2020, May 1). IRON VIKING Threat Profile. Retrieved June 10, 2020.",
+                    "url": "https://www.secureworks.com/research/threat-profiles/iron-viking"
+                }
+            ],
+            "object_marking_refs": [
+                "marking-definition--fa42a846-8d90-4e51-bc29-71d5b4802168"
+            ],
+            "x_mitre_version": "2.1"
+        },
+        {
+            "type": "malware",
+            "id": "malware--e401d4fe-f0c9-44f0-98e6-f93487678808",
+            "created_by_ref": "identity--c78cb6e5-0c4b-4611-8297-d1b8b55e40b5",
+            "created": "2021-01-04T20:42:21.997Z",
+            "modified": "2021-10-13T19:33:41.189Z",
+            "name": "Industroyer",
+            "description": "[Industroyer](https://attack.mitre.org/software/S0604) is a sophisticated malware framework designed to cause an impact to the working processes of Industrial Control Systems (ICS), specifically components used in electrical substations.(Citation: ESET Industroyer) [Industroyer](https://attack.mitre.org/software/S0604) was used in the attacks on the Ukrainian power grid in December 2016.(Citation: Dragos Crashoverride 2017) This is the first publicly known malware specifically designed to target and impact operations in the electric grid.(Citation: Dragos Crashoverride 2018)",
+            "labels": [
+                "malware"
+            ],
+            "external_references": [
+                {
+                    "source_name": "mitre-attack",
+                    "url": "https://attack.mitre.org/software/S0604",
+                    "external_id": "S0604"
+                },
+                {
+                    "source_name": "CRASHOVERRIDE",
+                    "description": "(Citation: Dragos Crashoverride 2017)"
+                },
+                {
+                    "source_name": "Win32/Industroyer",
+                    "description": "(Citation: ESET Industroyer)"
+                },
+                {
+                    "source_name": "ESET Industroyer",
+                    "description": "Anton Cherepanov. (2017, June 12). Win32/Industroyer: A new threat for industrial controls systems. Retrieved December 18, 2020.",
+                    "url": "https://www.welivesecurity.com/wp-content/uploads/2017/06/Win32_Industroyer.pdf"
+                },
+                {
+                    "source_name": "Dragos Crashoverride 2017",
+                    "description": "Dragos Inc.. (2017, June 13). CRASHOVERRIDE Analysis of the Threat to Electric Grid Operations. Retrieved December 18, 2020.",
+                    "url": "https://dragos.com/blog/crashoverride/CrashOverride-01.pdf"
+                },
+                {
+                    "source_name": "Dragos Crashoverride 2018",
+                    "description": "Joe Slowik. (2018, October 12). Anatomy of an Attack: Detecting and Defeating CRASHOVERRIDE. Retrieved December 18, 2020.",
+                    "url": "https://www.dragos.com/wp-content/uploads/CRASHOVERRIDE2018.pdf"
+                }
+            ],
+            "object_marking_refs": [
+                "marking-definition--fa42a846-8d90-4e51-bc29-71d5b4802168"
+            ],
+            "x_mitre_aliases": [
+                "Industroyer",
+                "CRASHOVERRIDE",
+                "Win32/Industroyer"
+            ],
+            "x_mitre_version": "1.0",
+            "x_mitre_platforms": [
+                "Windows"
+            ]
+        },
+        {
+            "type": "malware",
+            "id": "malware--088f1d6e-0783-47c6-9923-9c79b2af43d4",
+            "created_by_ref": "identity--c78cb6e5-0c4b-4611-8297-d1b8b55e40b5",
+            "created": "2020-12-14T17:34:58.457Z",
+            "modified": "2021-10-12T21:50:58.905Z",
+            "name": "Stuxnet",
+            "description": "[Stuxnet](https://attack.mitre.org/software/S0603) was the first publicly reported piece of malware to specifically target industrial control systems devices. [Stuxnet](https://attack.mitre.org/software/S0603) is a large and complex piece of malware that utilized multiple different behaviors including multiple zero-day vulnerabilities, a sophisticated Windows rootkit, and network infection routines.(Citation: Symantec W.32 Stuxnet Dossier)(Citation: CISA ICS Advisory ICSA-10-272-01)(Citation: ESET Stuxnet Under the Microscope)(Citation: Langer Stuxnet) [Stuxnet](https://attack.mitre.org/software/S0603) was discovered in 2010, with some components being used as early as November 2008.(Citation: Symantec W.32 Stuxnet Dossier)",
+            "labels": [
+                "malware"
+            ],
+            "external_references": [
+                {
+                    "source_name": "mitre-attack",
+                    "url": "https://attack.mitre.org/software/S0603",
+                    "external_id": "S0603"
+                },
+                {
+                    "source_name": "W32.Stuxnet",
+                    "description": "(Citation: Symantec W.32 Stuxnet Dossier)"
+                },
+                {
+                    "source_name": "Symantec W.32 Stuxnet Dossier",
+                    "description": "Nicolas Falliere, Liam O. Murchu, Eric Chien. (2011, February). W32.Stuxnet Dossier. Retrieved December 7, 2020.",
+                    "url": "https://www.wired.com/images_blogs/threatlevel/2010/11/w32_stuxnet_dossier.pdf"
+                },
+                {
+                    "source_name": "CISA ICS Advisory ICSA-10-272-01",
+                    "description": "CISA. (2010, September 10). ICS Advisory (ICSA-10-272-01). Retrieved December 7, 2020.",
+                    "url": "https://us-cert.cisa.gov/ics/advisories/ICSA-10-272-01"
+                },
+                {
+                    "source_name": "ESET Stuxnet Under the Microscope",
+                    "description": "Matrosov, A., Rodionov, E., Harley, D., Malcho, J.. (n.d.). Stuxnet Under the Microscope. Retrieved December 7, 2020.",
+                    "url": "https://www.esetnod32.ru/company/viruslab/analytics/doc/Stuxnet_Under_the_Microscope.pdf"
+                },
+                {
+                    "source_name": "Langer Stuxnet",
+                    "description": "Ralph Langner. (2013, November). Ralph Langner. (2013, November). To Kill a Centrifuge: A Technical Analysis of What Stuxnet's Creators Tried to Achieve. Retrieved December 7, 2020.",
+                    "url": "https://www.langner.com/wp-content/uploads/2017/03/to-kill-a-centrifuge.pdf"
+                }
+            ],
+            "object_marking_refs": [
+                "marking-definition--fa42a846-8d90-4e51-bc29-71d5b4802168"
+            ],
+            "x_mitre_aliases": [
+                "Stuxnet",
+                "W32.Stuxnet"
+            ],
+            "x_mitre_version": "1.0",
+            "x_mitre_platforms": [
+                "Windows"
+            ]
+        }
+    ]
+}

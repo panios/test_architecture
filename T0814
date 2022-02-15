@@ -1,0 +1,290 @@
+{
+    "type": "bundle",
+    "id": "bundle--ca12eac5-e1e5-4588-9319-15c676cbeb3b",
+    "spec_version": "2.0",
+    "objects": [
+        {
+            "type": "attack-pattern",
+            "id": "attack-pattern--1b22b676-9347-4c55-9a35-ef0dc653db5b",
+            "created_by_ref": "identity--c78cb6e5-0c4b-4611-8297-d1b8b55e40b5",
+            "created": "2020-05-21T17:43:26.506Z",
+            "modified": "2021-10-08T15:25:32.143Z",
+            "name": "Denial of Service",
+            "description": "Adversaries may perform Denial-of-Service (DoS) attacks to disrupt expected device functionality. Examples of DoS attacks include overwhelming the target device with a high volume of requests in a short time period and sending the target device a request it does not know how to handle. Disrupting device state may temporarily render it unresponsive, possibly lasting until a reboot can occur. When placed in this state, devices may be unable to send and receive requests, and may not perform expected response functions in reaction to other events in the environment.\n\nSome ICS devices are particularly sensitive to DoS events, and may become unresponsive in reaction to even a simple ping sweep. Adversaries may also attempt to execute a Permanent Denial-of-Service (PDoS) against certain devices, such as in the case of the BrickerBot malware. (Citation: BrickerBot - ICS-CERT - Alert)\n\nAdversaries may exploit a software vulnerability to cause a denial of service by taking advantage of a programming error in a program, service, or within the operating system software or kernel itself to execute adversary-controlled code. Vulnerabilities may exist in software that can be used to cause a  or denial of service condition.\n\nAdversaries may have prior knowledge about industrial protocols or control devices used in the environment through <span class=\"smw-format list-format \"><span class=\"smw-row\"><span class=\"smw-field\"><span class=\"smw-value\">Control Device Identification</span></span></span></span>. There are examples of adversaries remotely causing a <span class=\"smw-format list-format \"><span class=\"smw-row\"><span class=\"smw-field\"><span class=\"smw-value\">Device Restart/Shutdown</span></span></span></span> by exploiting a vulnerability that induces uncontrolled resource consumption. (Citation: Industroyer - ICS-CERT ADV) (Citation: Industroyer - CWE-400) (Citation: Industroyer - CVE-2015-5374)\n\nIn the Maroochy attack, the adversary was able to shut an investigator out of the network. (Citation: Maroochy - MITRE - 200808)",
+            "kill_chain_phases": [
+                {
+                    "kill_chain_name": "mitre-ics-attack",
+                    "phase_name": "inhibit-response-function"
+                }
+            ],
+            "external_references": [
+                {
+                    "source_name": "mitre-ics-attack",
+                    "url": "https://collaborate.mitre.org/attackics/index.php/Technique/T0814",
+                    "external_id": "T0814"
+                },
+                {
+                    "source_name": "BrickerBot - ICS-CERT - Alert",
+                    "description": "ICS-CERT. (2017, April 18). CS Alert (ICS-ALERT-17-102-01A) BrickerBot Permanent Denial-of-Service Attack. Retrieved October 24, 2019.",
+                    "url": "https://www.us-cert.gov/ics/alerts/ICS-ALERT-17-102-01A"
+                },
+                {
+                    "source_name": "Maroochy - MITRE - 200808",
+                    "description": "Marshall Abrams. (2008, July 23). Malicious Control System Cyber Security Attack Case Study\u2013 Maroochy Water Services, Australia. Retrieved March 27, 2018.",
+                    "url": "https://www.mitre.org/sites/default/files/pdf/08%201145.pdf"
+                },
+                {
+                    "source_name": "Industroyer - ICS-CERT ADV",
+                    "description": "ICS-CERT. (2018, August 27). Advisory (ICSA-15-202-01) - Siemens SIPROTEC Denial-of-Service Vulnerability. Retrieved March 14, 2019.",
+                    "url": "https://ics-cert.us-cert.gov/advisories/ICSA-15-202-01"
+                },
+                {
+                    "source_name": "Industroyer - CWE-400",
+                    "description": "Common Weakness Enumeration. (2019, January 03). CWE-400: Uncontrolled Resource Consumption. Retrieved March 14, 2019.",
+                    "url": "http://cwe.mitre.org/data/definitions/400.html"
+                },
+                {
+                    "source_name": "Industroyer - CVE-2015-5374",
+                    "description": "MITRE. (2018, March 22). CVE-2015-5374. Retrieved March 14, 2019.",
+                    "url": "https://nvd.nist.gov/vuln/detail/CVE-2015-5374"
+                }
+            ],
+            "object_marking_refs": [
+                "marking-definition--fa42a846-8d90-4e51-bc29-71d5b4802168"
+            ],
+            "x_mitre_data_sources": [
+                "Application Log: Application Log Content",
+                "Network Traffic: Network Traffic Content",
+                "Network Traffic: Network Traffic Flow",
+                "Operational Databases: Process History/Live Data"
+            ],
+            "x_mitre_platforms": [
+                "Field Controller/RTU/PLC/IED",
+                "Safety Instrumented System/Protection Relay"
+            ]
+        },
+        {
+            "type": "course-of-action",
+            "id": "course-of-action--98aa0d61-fc9d-4b2d-8f18-b25d03549f53",
+            "created_by_ref": "identity--c78cb6e5-0c4b-4611-8297-d1b8b55e40b5",
+            "created": "2019-06-06T21:16:18.709Z",
+            "modified": "2020-09-29T17:25:45.681Z",
+            "name": "Watchdog Timers",
+            "description": "Utilize watchdog timers to ensure devices can quickly detect whether a system is operational, unresponsive, or in a good state. System / process restarts should be performed when a timeout condition occurs.",
+            "labels": [
+                "IEC 62443-4-2:2019 - CR 7.2"
+            ],
+            "external_references": [
+                {
+                    "source_name": "mitre-ics-attack",
+                    "url": "https://collaborate.mitre.org/attackics/index.php/Mitigation/M0815",
+                    "external_id": "M0815"
+                }
+            ],
+            "object_marking_refs": [
+                "marking-definition--fa42a846-8d90-4e51-bc29-71d5b4802168"
+            ],
+            "x_mitre_version": "1.0"
+        },
+        {
+            "type": "relationship",
+            "id": "relationship--d90aeeb6-3686-483a-8403-6514ecfe1a50",
+            "created_by_ref": "identity--c78cb6e5-0c4b-4611-8297-d1b8b55e40b5",
+            "created": "2018-04-18T17:59:24.739Z",
+            "modified": "2020-01-05T00:14:20.652Z",
+            "relationship_type": "uses",
+            "description": "The [Backdoor.Oldrea](https://collaborate.mitre.org/attackics/index.php/Software/S0003) payload has caused multiple common OPC platforms to intermittently crash. This could cause a denial of service effect on applications reliant on OPC communications.(Citation: CISA Advisory (ICSA-14-178-01))",
+            "source_ref": "malware--083bb47b-02c8-4423-81a2-f9ef58572974",
+            "target_ref": "attack-pattern--1b22b676-9347-4c55-9a35-ef0dc653db5b",
+            "external_references": [
+                {
+                    "source_name": "CISA Advisory (ICSA-14-178-01)",
+                    "description": "ICS-CERT. (2018, August 22). Advisory (ICSA-14-178-01). Retrieved April 1, 2019.",
+                    "url": "https://ics-cert.us-cert.gov/advisories/ICSA-14-178-01"
+                }
+            ],
+            "object_marking_refs": [
+                "marking-definition--fa42a846-8d90-4e51-bc29-71d5b4802168"
+            ]
+        },
+        {
+            "type": "relationship",
+            "id": "relationship--50c20664-75dc-451e-b026-67b1d309e4b5",
+            "created_by_ref": "identity--c78cb6e5-0c4b-4611-8297-d1b8b55e40b5",
+            "created": "2018-10-17T00:14:20.652Z",
+            "modified": "2020-01-06T00:14:20.652Z",
+            "relationship_type": "uses",
+            "description": "The [Industroyer](https://collaborate.mitre.org/attackics/index.php/Software/S0001), SIPROTEC DoS module exploits the CVE-2015-5374 vulnerability in order to render a Siemens SIPROTEC device unresponsive. Once this vulnerability is successfully exploited, the target device stops responding to any commands until it is rebooted manually.(Citation: ESET Win32/Industroyer Jun 2017)Once the tool is executed it sends specifically crafted packets to port 50,000 of the target IP addresses using UDP. The UDP packet contains the following 18 byte payload: 0x11 49 00 00 00 00 00 00 00 00 00 00 00 00 00 00 28 9E.(Citation: ESET Win32/Industroyer Jun 2017)",
+            "source_ref": "malware--e401d4fe-f0c9-44f0-98e6-f93487678808",
+            "target_ref": "attack-pattern--1b22b676-9347-4c55-9a35-ef0dc653db5b",
+            "external_references": [
+                {
+                    "source_name": "ESET Win32/Industroyer Jun 2017",
+                    "description": "Anton Cherepanov, ESET. (2017, June 12). Win32/Industroyer: A new threat for industrial control systems. Retrieved September 15, 2017.",
+                    "url": "https://www.welivesecurity.com/wp-content/uploads/2017/06/Win32_Industroyer.pdf"
+                }
+            ],
+            "object_marking_refs": [
+                "marking-definition--fa42a846-8d90-4e51-bc29-71d5b4802168"
+            ]
+        },
+        {
+            "type": "relationship",
+            "id": "relationship--535c5160-17e0-44eb-9f4b-1a8e216b56a2",
+            "created_by_ref": "identity--c78cb6e5-0c4b-4611-8297-d1b8b55e40b5",
+            "created": "2018-10-17T00:14:20.652Z",
+            "modified": "2020-01-02T00:14:20.652Z",
+            "relationship_type": "uses",
+            "description": "The execution on the PLC can be stopped by violating the cycle time limit. The [PLC-Blaster](https://collaborate.mitre.org/attackics/index.php/Software/S0009) implements an endless loop triggering an error condition within the PLC with the impact of a DoS.(Citation: BlackHat Mar 2016)",
+            "source_ref": "malware--4dcff507-5af8-47ce-964a-8d9569e9ccfe",
+            "target_ref": "attack-pattern--1b22b676-9347-4c55-9a35-ef0dc653db5b",
+            "external_references": [
+                {
+                    "source_name": "BlackHat Mar 2016",
+                    "description": "Spenneberg, Ralf, Maik Br\u00fcggemann, and Hendrik Schwartke. (2016, March 31). Plc-blaster: A worm living solely in the plc.. Retrieved September 19, 2017.",
+                    "url": "https://www.blackhat.com/docs/asia-16/materials/asia-16-Spenneberg-PLC-Blaster-A-Worm-Living-Solely-In-The-PLC-wp.pdf"
+                }
+            ],
+            "object_marking_refs": [
+                "marking-definition--fa42a846-8d90-4e51-bc29-71d5b4802168"
+            ]
+        },
+        {
+            "type": "relationship",
+            "id": "relationship--5d0a7979-0420-4fd1-b5ad-cb5565cbdf9d",
+            "created_by_ref": "identity--c78cb6e5-0c4b-4611-8297-d1b8b55e40b5",
+            "created": "2020-09-21T17:59:24.739Z",
+            "modified": "2020-09-29T18:58:17.429Z",
+            "relationship_type": "mitigates",
+            "description": "System and process restarts should be performed when a timeout condition occurs.",
+            "source_ref": "course-of-action--98aa0d61-fc9d-4b2d-8f18-b25d03549f53",
+            "target_ref": "attack-pattern--1b22b676-9347-4c55-9a35-ef0dc653db5b",
+            "object_marking_refs": [
+                "marking-definition--fa42a846-8d90-4e51-bc29-71d5b4802168"
+            ]
+        },
+        {
+            "type": "malware",
+            "id": "malware--083bb47b-02c8-4423-81a2-f9ef58572974",
+            "created_by_ref": "identity--c78cb6e5-0c4b-4611-8297-d1b8b55e40b5",
+            "created": "2017-05-31T21:32:59.661Z",
+            "modified": "2020-03-30T02:49:50.902Z",
+            "name": "Backdoor.Oldrea",
+            "description": "[Backdoor.Oldrea](https://attack.mitre.org/software/S0093) is a backdoor used by [Dragonfly](https://attack.mitre.org/groups/G0035). It appears to be custom malware authored by the group or specifically for it. (Citation: Symantec Dragonfly)",
+            "labels": [
+                "malware"
+            ],
+            "external_references": [
+                {
+                    "source_name": "mitre-attack",
+                    "url": "https://attack.mitre.org/software/S0093",
+                    "external_id": "S0093"
+                },
+                {
+                    "source_name": "Symantec Dragonfly",
+                    "description": "Symantec Security Response. (2014, July 7). Dragonfly: Cyberespionage Attacks Against Energy Suppliers. Retrieved April 8, 2016.",
+                    "url": "http://www.symantec.com/content/en/us/enterprise/media/security_response/whitepapers/Dragonfly_Threat_Against_Western_Energy_Suppliers.pdf"
+                }
+            ],
+            "object_marking_refs": [
+                "marking-definition--fa42a846-8d90-4e51-bc29-71d5b4802168"
+            ],
+            "x_mitre_aliases": [
+                "Backdoor.Oldrea",
+                "Havex"
+            ],
+            "x_mitre_platforms": [
+                "Windows"
+            ],
+            "x_mitre_version": "1.1"
+        },
+        {
+            "type": "malware",
+            "id": "malware--e401d4fe-f0c9-44f0-98e6-f93487678808",
+            "created_by_ref": "identity--c78cb6e5-0c4b-4611-8297-d1b8b55e40b5",
+            "created": "2021-01-04T20:42:21.997Z",
+            "modified": "2021-10-13T19:33:41.189Z",
+            "name": "Industroyer",
+            "description": "[Industroyer](https://attack.mitre.org/software/S0604) is a sophisticated malware framework designed to cause an impact to the working processes of Industrial Control Systems (ICS), specifically components used in electrical substations.(Citation: ESET Industroyer) [Industroyer](https://attack.mitre.org/software/S0604) was used in the attacks on the Ukrainian power grid in December 2016.(Citation: Dragos Crashoverride 2017) This is the first publicly known malware specifically designed to target and impact operations in the electric grid.(Citation: Dragos Crashoverride 2018)",
+            "labels": [
+                "malware"
+            ],
+            "external_references": [
+                {
+                    "source_name": "mitre-attack",
+                    "url": "https://attack.mitre.org/software/S0604",
+                    "external_id": "S0604"
+                },
+                {
+                    "source_name": "CRASHOVERRIDE",
+                    "description": "(Citation: Dragos Crashoverride 2017)"
+                },
+                {
+                    "source_name": "Win32/Industroyer",
+                    "description": "(Citation: ESET Industroyer)"
+                },
+                {
+                    "source_name": "ESET Industroyer",
+                    "description": "Anton Cherepanov. (2017, June 12). Win32/Industroyer: A new threat for industrial controls systems. Retrieved December 18, 2020.",
+                    "url": "https://www.welivesecurity.com/wp-content/uploads/2017/06/Win32_Industroyer.pdf"
+                },
+                {
+                    "source_name": "Dragos Crashoverride 2017",
+                    "description": "Dragos Inc.. (2017, June 13). CRASHOVERRIDE Analysis of the Threat to Electric Grid Operations. Retrieved December 18, 2020.",
+                    "url": "https://dragos.com/blog/crashoverride/CrashOverride-01.pdf"
+                },
+                {
+                    "source_name": "Dragos Crashoverride 2018",
+                    "description": "Joe Slowik. (2018, October 12). Anatomy of an Attack: Detecting and Defeating CRASHOVERRIDE. Retrieved December 18, 2020.",
+                    "url": "https://www.dragos.com/wp-content/uploads/CRASHOVERRIDE2018.pdf"
+                }
+            ],
+            "object_marking_refs": [
+                "marking-definition--fa42a846-8d90-4e51-bc29-71d5b4802168"
+            ],
+            "x_mitre_aliases": [
+                "Industroyer",
+                "CRASHOVERRIDE",
+                "Win32/Industroyer"
+            ],
+            "x_mitre_version": "1.0",
+            "x_mitre_platforms": [
+                "Windows"
+            ]
+        },
+        {
+            "type": "malware",
+            "id": "malware--4dcff507-5af8-47ce-964a-8d9569e9ccfe",
+            "created_by_ref": "identity--c78cb6e5-0c4b-4611-8297-d1b8b55e40b5",
+            "created": "2019-03-26T15:02:14.907Z",
+            "modified": "2020-01-02T22:01:15.893Z",
+            "name": "PLC-Blaster",
+            "description": "[PLC-Blaster](https://collaborate.mitre.org/attackics/index.php/Software/S0009) is a piece of proof-of-concept malware that runs on Siemens S7 PLCs. This worm locates other Siemens S7 PLCs on the network and attempts to infect them. Once this worm has infected its target and attempted to infect other devices on the network, the worm can then run one of many modules.(Citation: BlackHat PLC-Blaster Mar 2016)(Citation: BlackHat PLC-Blaster 2016)",
+            "labels": [
+                "malware"
+            ],
+            "external_references": [
+                {
+                    "source_name": "mitre-ics-attack",
+                    "url": "https://collaborate.mitre.org/attackics/index.php/Software/S0009",
+                    "external_id": "S1006"
+                },
+                {
+                    "source_name": "BlackHat PLC-Blaster 2016",
+                    "description": "Spenneberg, Ralf, Maik Br\u00fcggemann, and Hendrik Schwartke. (2016, March 31). Plc-blaster: A worm living solely in the plc.. Retrieved September 19, 2017.",
+                    "url": "https://www.blackhat.com/docs/asia-16/materials/asia-16-Spenneberg-PLC-Blaster-A-Worm-Living-Solely-In-The-PLC.pdf"
+                }
+            ],
+            "object_marking_refs": [
+                "marking-definition--fa42a846-8d90-4e51-bc29-71d5b4802168"
+            ],
+            "x_mitre_aliases": [
+                "PLC-Blaster"
+            ],
+            "x_mitre_version": "1.0",
+            "x_mitre_platforms": [
+                "Windows"
+            ]
+        }
+    ]
+}

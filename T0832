@@ -1,0 +1,331 @@
+{
+    "type": "bundle",
+    "id": "bundle--600bc9a1-fd99-4077-82b6-fcafe1e46ad0",
+    "spec_version": "2.0",
+    "objects": [
+        {
+            "type": "attack-pattern",
+            "id": "attack-pattern--4c2e1408-9d68-4187-8e6b-a77bc52700ec",
+            "created_by_ref": "identity--c78cb6e5-0c4b-4611-8297-d1b8b55e40b5",
+            "created": "2020-05-21T17:43:26.506Z",
+            "modified": "2021-04-12T07:57:26.506Z",
+            "name": "Manipulation of View",
+            "description": "Adversaries may attempt to manipulate the information reported back to operators or controllers. This manipulation may be short term or sustained. During this time the process itself could be in a much different state than what is reported. (Citation: Reference - Corero) (Citation: Reference - SANS - 201510) (Citation: Reference - RIoT) \n\nOperators may be fooled into doing something that is harmful to the system in a loss of view situation. With a manipulated view into the systems, operators may issue inappropriate control sequences that introduce faults or catastrophic failures into the system. Business analysis systems can also be provided with inaccurate data leading to bad management decisions.",
+            "kill_chain_phases": [
+                {
+                    "kill_chain_name": "mitre-ics-attack",
+                    "phase_name": "impact-ics"
+                }
+            ],
+            "external_references": [
+                {
+                    "source_name": "mitre-ics-attack",
+                    "url": "https://collaborate.mitre.org/attackics/index.php/Technique/T0832",
+                    "external_id": "T0832"
+                },
+                {
+                    "source_name": "Reference - Corero",
+                    "description": "Corero. (n.d.). Industrial Control System (ICS) Security. Retrieved November 4, 2019.",
+                    "url": "https://www.corero.com/resources/files/whitepapers/cns%20whitepaper%20ics.pdf"
+                },
+                {
+                    "source_name": "Reference - SANS - 201510",
+                    "description": "Michael J. Assante and Robert M. Lee. (n.d.). The Industrial Control System Cyber Kill Chain. Retrieved November 4, 2019.",
+                    "url": "https://www.sans.org/reading-room/whitepapers/ICS/industrial-control-system-cyber-kill-chain-36297"
+                },
+                {
+                    "source_name": "Reference - RIoT",
+                    "description": "Tyson Macaulay. (n.d.). RIoT Control: Understanding and Managing Risks and the Internet of Things. Retrieved November 4, 2019."
+                }
+            ],
+            "object_marking_refs": [
+                "marking-definition--fa42a846-8d90-4e51-bc29-71d5b4802168"
+            ],
+            "x_mitre_platforms": [
+                "Engineering Workstation",
+                "Human-Machine Interface",
+                "Field Controller/RTU/PLC/IED"
+            ]
+        },
+        {
+            "type": "course-of-action",
+            "id": "course-of-action--c7257b6e-4159-4771-b1f3-2bb93adaecac",
+            "created_by_ref": "identity--c78cb6e5-0c4b-4611-8297-d1b8b55e40b5",
+            "created": "2020-09-11T16:32:21.854Z",
+            "modified": "2020-09-17T13:55:21.233Z",
+            "name": "Communication Authenticity",
+            "description": "When communicating over an untrusted network utilize secure network protocols that both authenticate the message sender and can verify its integrity, either through message authentication codes (MACs) or digital signatures, to prevent the transmission of spoofed network messages or unauthorized connections.",
+            "labels": [
+                "NIST SP 800-53 Rev. 4 - SC-8;SC-23",
+                "IEC 62443-3-3:2013 - SR 3.1",
+                "IEC 62443-4-2:2019 - CR 3.1"
+            ],
+            "external_references": [
+                {
+                    "source_name": "mitre-ics-attack",
+                    "url": "https://collaborate.mitre.org/attackics/index.php/Mitigation/M0802",
+                    "external_id": "M0802"
+                }
+            ],
+            "object_marking_refs": [
+                "marking-definition--fa42a846-8d90-4e51-bc29-71d5b4802168"
+            ],
+            "x_mitre_version": "1.0"
+        },
+        {
+            "type": "course-of-action",
+            "id": "course-of-action--ad12819e-3211-4291-b360-069f280cff0a",
+            "created_by_ref": "identity--c78cb6e5-0c4b-4611-8297-d1b8b55e40b5",
+            "created": "2019-07-19T14:33:33.543Z",
+            "modified": "2021-04-10T14:18:28.201Z",
+            "name": "Data Backup",
+            "description": "Take and store data backups from end user systems and critical servers. Ensure backup and storage systems are hardened and kept separate from the corporate network to prevent compromise. Maintain and exercise incident response plans, including the management of 'gold-copy' back-up images and configurations for key systems to enable quick recovery and response from adversarial activities that impact control, view, or availability.",
+            "labels": [
+                "NIST SP 800-53 Rev. 4 - CP-9",
+                "IEC 62443-3-3:2013 - SR 7.3",
+                "IEC 62443-4-2:2019 - CR 7.3"
+            ],
+            "external_references": [
+                {
+                    "source_name": "mitre-attack",
+                    "url": "https://collaborate.mitre.org/attackics/index.php/Mitigation/M0953",
+                    "external_id": "M0953"
+                }
+            ],
+            "object_marking_refs": [
+                "marking-definition--fa42a846-8d90-4e51-bc29-71d5b4802168"
+            ],
+            "x_mitre_version": "1.0"
+        },
+        {
+            "type": "course-of-action",
+            "id": "course-of-action--b11cad63-ef30-4eb8-af0d-6cc46eef3f3e",
+            "created_by_ref": "identity--c78cb6e5-0c4b-4611-8297-d1b8b55e40b5",
+            "created": "2019-06-06T21:16:18.709Z",
+            "modified": "2020-09-22T16:50:45.681Z",
+            "name": "Out-of-Band Communications Channel",
+            "description": "Provide operators with redundant, out-of-band communication to support monitoring and control of the operational processes, especially when recovering from a network outage. (Citation: NIST Apr 2013)(Citation: DARPA) Out-of-band communication should utilize diverse systems and technologies to minimize common failure modes and vulnerabilities within the communications infrastructure. For example, wireless networks (e.g., 3G, 4G) can be used to provide diverse and redundant delivery of data.",
+            "labels": [
+                "NIST SP 800-53 Rev. 4 - SC-37"
+            ],
+            "external_references": [
+                {
+                    "source_name": "mitre-ics-attack",
+                    "url": "https://collaborate.mitre.org/attackics/index.php/Mitigation/M0810",
+                    "external_id": "M0810"
+                },
+                {
+                    "source_name": "NIST Apr 2013",
+                    "description": "National Institute of Standards and Technology. (2013, April). Security and Privacy Controls for Federal Information Systems and Organizations. Retrieved September 17, 2020.",
+                    "url": "https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-53r4.pdf"
+                },
+                {
+                    "source_name": "DARPA",
+                    "description": "Defense Advanced Research Projects Agency. (n.d.). Rapid Attack Detection, Isolation and Characterization Systems (RADICS). Retrieved September 17, 2020.",
+                    "url": "https://www.darpa.mil/program/rapid-attack-detection-isolation-and-characterization-systems"
+                }
+            ],
+            "object_marking_refs": [
+                "marking-definition--fa42a846-8d90-4e51-bc29-71d5b4802168"
+            ],
+            "x_mitre_version": "1.0"
+        },
+        {
+            "type": "relationship",
+            "id": "relationship--ca3c4d4b-cf53-4489-904f-8a220e421aeb",
+            "created_by_ref": "identity--c78cb6e5-0c4b-4611-8297-d1b8b55e40b5",
+            "created": "2018-10-17T00:14:20.652Z",
+            "modified": "2020-01-06T00:14:20.652Z",
+            "relationship_type": "uses",
+            "description": "[Industroyer](https://collaborate.mitre.org/attackics/index.php/Software/S0001)'s OPC module can brute force values and will send out a 0x01 status which for the target systems equates to a 'Primary Variable Out of Limits' misdirecting operators from understanding protective relay status.(Citation: ESET Win32/Industroyer Jun 2017)",
+            "source_ref": "malware--e401d4fe-f0c9-44f0-98e6-f93487678808",
+            "target_ref": "attack-pattern--4c2e1408-9d68-4187-8e6b-a77bc52700ec",
+            "external_references": [
+                {
+                    "source_name": "ESET Win32/Industroyer Jun 2017",
+                    "description": "Anton Cherepanov, ESET. (2017, June 12). Win32/Industroyer: A new threat for industrial control systems. Retrieved September 15, 2017.",
+                    "url": "https://www.welivesecurity.com/wp-content/uploads/2017/06/Win32_Industroyer.pdf"
+                }
+            ],
+            "object_marking_refs": [
+                "marking-definition--fa42a846-8d90-4e51-bc29-71d5b4802168"
+            ]
+        },
+        {
+            "type": "relationship",
+            "id": "relationship--e257913e-40ba-4a05-ba97-0c3175c966b5",
+            "created_by_ref": "identity--c78cb6e5-0c4b-4611-8297-d1b8b55e40b5",
+            "created": "2017-12-14T16:46:06.044Z",
+            "modified": "2020-01-03T00:14:20.652Z",
+            "relationship_type": "uses",
+            "description": "[Stuxnet](https://collaborate.mitre.org/attackics/index.php/Software/S0010) manipulates the view of operators replaying process input and manipulating the I/O image to evade detection and inhibit protection functions.(Citation: Langner Nov 2013)(Citation: Wired W32.Stuxnet Feb 2011)",
+            "source_ref": "malware--088f1d6e-0783-47c6-9923-9c79b2af43d4",
+            "target_ref": "attack-pattern--4c2e1408-9d68-4187-8e6b-a77bc52700ec",
+            "external_references": [
+                {
+                    "source_name": "Wired W32.Stuxnet Feb 2011",
+                    "description": "Nicolas Falliere, Liam O Murchu, Eric Chien. (2011, February). W32.Stuxnet Dossier (Version 1.4). Retrieved September 22, 2017.",
+                    "url": "https://www.wired.com/images_blogs/threatlevel/2010/11/w32_stuxnet_dossier.pdf"
+                },
+                {
+                    "source_name": "Langner Nov 2013",
+                    "description": "Ralph Langner. (2013, November). To Kill a Centrifuge: A Technical Analysis of What Stuxnet's Creators Tried to Achieve. Retrieved March 27, 2018.",
+                    "url": "https://www.langner.com/wp-content/uploads/2017/03/to-kill-a-centrifuge.pdf"
+                }
+            ],
+            "object_marking_refs": [
+                "marking-definition--fa42a846-8d90-4e51-bc29-71d5b4802168"
+            ]
+        },
+        {
+            "type": "relationship",
+            "id": "relationship--41adaf0b-b7ae-4bdb-9a5b-567fd0911d7a",
+            "created_by_ref": "identity--c78cb6e5-0c4b-4611-8297-d1b8b55e40b5",
+            "created": "2020-09-21T17:59:24.739Z",
+            "modified": "2020-09-29T18:58:17.429Z",
+            "relationship_type": "mitigates",
+            "description": "Protocols used for control functions should provide authenticity through MAC functions or digital signatures. If not, utilize bump-in-the-wire devices or VPNs to enforce communication authenticity between devices that are not capable of supporting this (e.g., legacy controllers, RTUs).",
+            "source_ref": "course-of-action--c7257b6e-4159-4771-b1f3-2bb93adaecac",
+            "target_ref": "attack-pattern--4c2e1408-9d68-4187-8e6b-a77bc52700ec",
+            "object_marking_refs": [
+                "marking-definition--fa42a846-8d90-4e51-bc29-71d5b4802168"
+            ]
+        },
+        {
+            "type": "relationship",
+            "id": "relationship--c64f2ed2-f7a7-4333-b0d3-d687ffb7ad6b",
+            "created_by_ref": "identity--c78cb6e5-0c4b-4611-8297-d1b8b55e40b5",
+            "created": "2020-09-21T17:59:24.739Z",
+            "modified": "2020-09-29T18:58:17.429Z",
+            "relationship_type": "mitigates",
+            "description": "Take and store data backups from end user systems and critical servers. Ensure backup and storage systems are hardened and kept separate from the corporate network to prevent compromise. Maintain and exercise incident response plans, including the management of 'gold-copy' back-up images and configurations for key systems to enable quick recovery and response to adversarial activities that impact control, view, or availability.",
+            "source_ref": "course-of-action--ad12819e-3211-4291-b360-069f280cff0a",
+            "target_ref": "attack-pattern--4c2e1408-9d68-4187-8e6b-a77bc52700ec",
+            "object_marking_refs": [
+                "marking-definition--fa42a846-8d90-4e51-bc29-71d5b4802168"
+            ]
+        },
+        {
+            "type": "relationship",
+            "id": "relationship--58cb4cb5-4b0f-4ce0-b3f9-5deb9de31c52",
+            "created_by_ref": "identity--c78cb6e5-0c4b-4611-8297-d1b8b55e40b5",
+            "created": "2020-09-21T17:59:24.739Z",
+            "modified": "2020-09-29T18:58:17.429Z",
+            "relationship_type": "mitigates",
+            "description": "Utilize out-of-band communication to validate the integrity of data from the primary channel.",
+            "source_ref": "course-of-action--b11cad63-ef30-4eb8-af0d-6cc46eef3f3e",
+            "target_ref": "attack-pattern--4c2e1408-9d68-4187-8e6b-a77bc52700ec",
+            "object_marking_refs": [
+                "marking-definition--fa42a846-8d90-4e51-bc29-71d5b4802168"
+            ]
+        },
+        {
+            "type": "malware",
+            "id": "malware--e401d4fe-f0c9-44f0-98e6-f93487678808",
+            "created_by_ref": "identity--c78cb6e5-0c4b-4611-8297-d1b8b55e40b5",
+            "created": "2021-01-04T20:42:21.997Z",
+            "modified": "2021-10-13T19:33:41.189Z",
+            "name": "Industroyer",
+            "description": "[Industroyer](https://attack.mitre.org/software/S0604) is a sophisticated malware framework designed to cause an impact to the working processes of Industrial Control Systems (ICS), specifically components used in electrical substations.(Citation: ESET Industroyer) [Industroyer](https://attack.mitre.org/software/S0604) was used in the attacks on the Ukrainian power grid in December 2016.(Citation: Dragos Crashoverride 2017) This is the first publicly known malware specifically designed to target and impact operations in the electric grid.(Citation: Dragos Crashoverride 2018)",
+            "labels": [
+                "malware"
+            ],
+            "external_references": [
+                {
+                    "source_name": "mitre-attack",
+                    "url": "https://attack.mitre.org/software/S0604",
+                    "external_id": "S0604"
+                },
+                {
+                    "source_name": "CRASHOVERRIDE",
+                    "description": "(Citation: Dragos Crashoverride 2017)"
+                },
+                {
+                    "source_name": "Win32/Industroyer",
+                    "description": "(Citation: ESET Industroyer)"
+                },
+                {
+                    "source_name": "ESET Industroyer",
+                    "description": "Anton Cherepanov. (2017, June 12). Win32/Industroyer: A new threat for industrial controls systems. Retrieved December 18, 2020.",
+                    "url": "https://www.welivesecurity.com/wp-content/uploads/2017/06/Win32_Industroyer.pdf"
+                },
+                {
+                    "source_name": "Dragos Crashoverride 2017",
+                    "description": "Dragos Inc.. (2017, June 13). CRASHOVERRIDE Analysis of the Threat to Electric Grid Operations. Retrieved December 18, 2020.",
+                    "url": "https://dragos.com/blog/crashoverride/CrashOverride-01.pdf"
+                },
+                {
+                    "source_name": "Dragos Crashoverride 2018",
+                    "description": "Joe Slowik. (2018, October 12). Anatomy of an Attack: Detecting and Defeating CRASHOVERRIDE. Retrieved December 18, 2020.",
+                    "url": "https://www.dragos.com/wp-content/uploads/CRASHOVERRIDE2018.pdf"
+                }
+            ],
+            "object_marking_refs": [
+                "marking-definition--fa42a846-8d90-4e51-bc29-71d5b4802168"
+            ],
+            "x_mitre_aliases": [
+                "Industroyer",
+                "CRASHOVERRIDE",
+                "Win32/Industroyer"
+            ],
+            "x_mitre_version": "1.0",
+            "x_mitre_platforms": [
+                "Windows"
+            ]
+        },
+        {
+            "type": "malware",
+            "id": "malware--088f1d6e-0783-47c6-9923-9c79b2af43d4",
+            "created_by_ref": "identity--c78cb6e5-0c4b-4611-8297-d1b8b55e40b5",
+            "created": "2020-12-14T17:34:58.457Z",
+            "modified": "2021-10-12T21:50:58.905Z",
+            "name": "Stuxnet",
+            "description": "[Stuxnet](https://attack.mitre.org/software/S0603) was the first publicly reported piece of malware to specifically target industrial control systems devices. [Stuxnet](https://attack.mitre.org/software/S0603) is a large and complex piece of malware that utilized multiple different behaviors including multiple zero-day vulnerabilities, a sophisticated Windows rootkit, and network infection routines.(Citation: Symantec W.32 Stuxnet Dossier)(Citation: CISA ICS Advisory ICSA-10-272-01)(Citation: ESET Stuxnet Under the Microscope)(Citation: Langer Stuxnet) [Stuxnet](https://attack.mitre.org/software/S0603) was discovered in 2010, with some components being used as early as November 2008.(Citation: Symantec W.32 Stuxnet Dossier)",
+            "labels": [
+                "malware"
+            ],
+            "external_references": [
+                {
+                    "source_name": "mitre-attack",
+                    "url": "https://attack.mitre.org/software/S0603",
+                    "external_id": "S0603"
+                },
+                {
+                    "source_name": "W32.Stuxnet",
+                    "description": "(Citation: Symantec W.32 Stuxnet Dossier)"
+                },
+                {
+                    "source_name": "Symantec W.32 Stuxnet Dossier",
+                    "description": "Nicolas Falliere, Liam O. Murchu, Eric Chien. (2011, February). W32.Stuxnet Dossier. Retrieved December 7, 2020.",
+                    "url": "https://www.wired.com/images_blogs/threatlevel/2010/11/w32_stuxnet_dossier.pdf"
+                },
+                {
+                    "source_name": "CISA ICS Advisory ICSA-10-272-01",
+                    "description": "CISA. (2010, September 10). ICS Advisory (ICSA-10-272-01). Retrieved December 7, 2020.",
+                    "url": "https://us-cert.cisa.gov/ics/advisories/ICSA-10-272-01"
+                },
+                {
+                    "source_name": "ESET Stuxnet Under the Microscope",
+                    "description": "Matrosov, A., Rodionov, E., Harley, D., Malcho, J.. (n.d.). Stuxnet Under the Microscope. Retrieved December 7, 2020.",
+                    "url": "https://www.esetnod32.ru/company/viruslab/analytics/doc/Stuxnet_Under_the_Microscope.pdf"
+                },
+                {
+                    "source_name": "Langer Stuxnet",
+                    "description": "Ralph Langner. (2013, November). Ralph Langner. (2013, November). To Kill a Centrifuge: A Technical Analysis of What Stuxnet's Creators Tried to Achieve. Retrieved December 7, 2020.",
+                    "url": "https://www.langner.com/wp-content/uploads/2017/03/to-kill-a-centrifuge.pdf"
+                }
+            ],
+            "object_marking_refs": [
+                "marking-definition--fa42a846-8d90-4e51-bc29-71d5b4802168"
+            ],
+            "x_mitre_aliases": [
+                "Stuxnet",
+                "W32.Stuxnet"
+            ],
+            "x_mitre_version": "1.0",
+            "x_mitre_platforms": [
+                "Windows"
+            ]
+        }
+    ]
+}
